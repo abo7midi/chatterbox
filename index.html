@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>محول عملات</title>
+		<style>
+			body{
+				font-family: 'Expo Arabic';
+			}
+			.container{
+				background: #e8e8e8;
+					padding-top: 50px;
+					text-align: center;
+					direction: rtl;
+					width: 100%;
+					margin: 0 auto;
+				
+			}
+			.t{
+				box-shadow: 1px 1px 8px #000;
+			   background: #09c;
+				width: 50%;
+				margin: auto;
+				padding: 50px;
+				padding-left: 130px;
+				
+				
+				border-radius: 20px;
+			
+			}
+			input,select,button{
+				width: 25%;
+				height: 30px;
+				background: white;
+				border: 0;
+				border-radius: 40px;
+				padding: 3px;
+				margin-right: 20px;
+			}
+			.currency,.total,.unit{
+				background: #fff;
+				display: inline-block;
+				width: 30%;
+				height: 40px;
+				
+				border-radius: 10px;
+				padding: 3px;
+				margin:4px;
+			}
+			
+			p{
+				display: flex;
+				flex-direction: row;
+				width: 90%;
+				margin: 0 auto;
+				margin-right: 20%;
+				margin-top: 10px;
+			}
+			
+			#currency,#total,#unit{
+				width: 20%;
+				height: 30px;
+				margin:5px;
+				text-align: center;
+				padding-right: 30px;
+			}
+		</style>
+	</head>
+		
+	<body>
+		<section class="container">
+			<section class="t">
+			
+			<label>ادخل القيمة</label>
+			<input type="number" id="val">
+			<select id="coin">
+				<option value="1">ريال يمني</option>
+				<option value="2">دولار امريكي</option>
+				<option value="3">يورو اوروبي</option>
+				<option value="4">ريال سعودي</option>
+
+			</select>
+
+			<button onclick="calc()"> احسب</button>
+			<p id="table">
+				<span id="currency">العملة</span>
+				<span id="unit">سعر الوحدة</span>
+				<span id="total">المجموع</span>
+			</p>
+			<p id="table" class="table">
+				<span id="currency" class="currency">ريال سعودي</span>
+				<span id="ksa-unit" class="unit"></span>
+				<span id="ksa-total" class="total"></span>
+			</p>
+			<p id="table" class="table"><span id="currency" class="currency">ردولار امريكي</span><span id="usa-unit" class="unit"></span><span id="usa-total" class="total"></span></p>
+			<p id="table" class="table"><span id="currency" class="currency">يورو اوروبي</span><span id="uk-unit" class="unit"></span><span id="uk-total" class="total"></span></p>
+			<p id="table" class="table"><span id="currency" class="currency">ريال يمني</span><span id="y-unit" class="unit"></span><span id="y-total" class="total"></span></p>
+		</section>	
+			</section>
+		<script>
+			
+			var 
+				coin=document.getElementById("coin"),
+				ksa=document.getElementById("ksa-unit"),
+				usa=document.getElementById("usa-unit"),
+				uk=document.getElementById("uk-unit"),
+				y=document.getElementById("y-unit"),
+				ksaT=document.getElementById("ksa-total"),
+				usaT=document.getElementById("usa-total"),
+				ukT=document.getElementById("uk-total"),
+				yT=document.getElementById("y-total"),
+				ksaCoin=[1,125,552,.23],
+				usaCoin=[3.835,1,1.1058,.004],
+				ukCoin=[1,125,1,.025],
+				yCoin=[600,150,552,1];
+				
+				
+				
+				
+				function calc(){
+					console.log(coin.value);
+					var val=document.getElementById("val");
+					switch(coin.value){
+						case "1":sum(yCoin,val.value);break;
+						case "2":sum(usaCoin,val.value);break;
+						case "3":sum(ukCoin,val.value);break;
+						case "4":sum(ksaCoin,val.value);break;
+					}		
+				}
+			
+			function sum(arraycoin,mony){
+				ksa.innerHTML=arraycoin[0];
+				ksaT.innerHTML=arraycoin[0]*mony;
+				
+				usa.innerHTML=arraycoin[1];
+				usaT.innerHTML=arraycoin[1]*mony;
+				
+				uk.innerHTML=arraycoin[2];
+				ukT.innerHTML=arraycoin[2]*mony;
+				
+				y.innerHTML=arraycoin[3];
+				yT.innerHTML=arraycoin[3]*mony;
+			}
+				
+		</script>
+	</body>
+</html>
